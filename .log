@@ -1,0 +1,607 @@
+IQ-TREE MPI multicore version 2.2.2.7 COVID-edition for Linux 64-bit built Jan 23 2024
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    flash-GF63-Thin-10SC (AVX2, FMA3, 7 GB RAM)
+Command: /home/flash/IQTREE/build-master/iqtree2-mpi -s example.phy -m MFP -fast -mset JC69,F81,HKY,GTR -spp Output/S1_Par_example.phy -safe -pre Output/example.phy -seed 0 -redo
+Seed:    0 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Mar  7 21:46:12 2024
+Kernel:  Safe AVX+FMA - 1 threads (12 CPU cores detected)
+MPI:     1 processes
+
+HINT: Use -nt option to specify number of threads because your CPU has 12 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading partition model file Output/S1_Par_example.phy ...
+Reading alignment file example.phy ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.00409672 secs using 20.36% CPU
+Alignment has 14 sequences with 2436 columns, 556 distinct patterns
+330 parsimony-informative, 306 singleton sites, 1800 constant sites
+Analyzing sequences: done in 4.0287e-05 secs
+NOTE: No CharPartition defined, use all CharSets
+
+Loading 3 partitions...
+Identifying sites to remove: done in 0.000436637 secs using 99.85% CPU
+Subset	Type	Seqs	Sites	Infor	Invar	Model	Name
+1		14	813	146	572	MFP	Par1
+2		14	810	125	592	MFP	Par2
+3		11	813	59	636	MFP	Par3
+Degree of missing data: 0.07
+Info: multi-threading strategy over partitions
+
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.00 seconds
+Perform fast likelihood tree search using GTR+I+G model...
+Estimate model parameters (epsilon = 5.00)
+Initial log-likelihood: -9383.80
+Current log-likelihood at step 1: -8930.07
+Current log-likelihood at step 2: -8923.86
+Current log-likelihood at step 3: -8923.59
+Parameters optimization took 2 rounds (0.09 sec)
+
+Perform nearest neighbor interchange...
+Optimizing NNI: done in 0.013215 secs using 99.98% CPU
+Estimate model parameters (epsilon = 1.00)
+Initial log-likelihood: -8923.45
+Current log-likelihood at step 1: -8923.34
+Partition-specific rates:  1.36 1.01 0.63
+Parameters optimization took 0 rounds (0.01 sec)
+
+Time for fast ML tree search: 0.11 seconds
+
+NOTE: ModelFinder requires 1 MB RAM!
+Selecting individual models for 3 charsets using BIC...
+ No. Model        Score       TreeLen     Charset
+WARNING: Log-likelihood -3342.32 of JC+I+R3 worse than JC+I+R2 -3270.18
+   1 GTR+F+I+R2   6083.21     1.66        Par1
+   2 GTR+F+I+R3   5604.88     1.35        Par2
+   3 GTR+F+I+R2   3716.82     0.66        Par3
+Full partition model BIC score: 15633.82 (LnL: -7575.17  df:62)
+Partition information was printed to Output/example.phy.best_scheme.nex
+Partition information in Raxml format was printed to Output/example.phy.best_scheme
+
+All model information printed to Output/example.phy.model.gz
+CPU time for ModelFinder: 0.49 seconds (0h:0m:0s)
+Wall-clock time for ModelFinder: 0.49 seconds (0h:0m:0s)
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.50)
+Initial log-likelihood: -7579.45
+Current log-likelihood at step 1: -7575.19
+Current log-likelihood at step 2: -7575.11
+Partition-specific rates:  1.29 1.06 0.65
+Parameters optimization took 1 rounds (0.02 sec)
+
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.000102229 secs using 94.89% CPU
+Computing ML distances took 0.000143 sec (of wall-clock time) 0.000140 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 2.1674e-05 secs using 96.89% CPU
+Constructing RapidNJ tree: done in 6.1889e-05 secs using 95.33% CPU
+Computing RapidNJ tree took 0.000107 sec (of wall-clock time) 0.000102 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -7956.577
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+
+Do NNI search on 2 best initial trees
+Optimizing NNI: done in 0.00552664 secs using 156.3% CPU
+Optimizing NNI: done in 0.0734007 secs using 94.52% CPU
+Finish initializing candidate tree set (3)
+Current best tree score: -7575.108 / CPU time: 0.081
+Number of iterations: 2
+Total number of trees received: 0
+Total number of trees sent: 0
+Total number of NNI searches done by processor 0: 3
+Total size of sended messages in processor 0 (bytes): 0
+Total size of received messages in processor 0 (bytes): 0
+TREE SEARCH COMPLETED AFTER 2 ITERATIONS / Time: 0h:0m:0s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.050)
+Initial log-likelihood: -7575.108
+Current log-likelihood at step 1: -7575.107
+Partition-specific rates:  1.288 1.058 0.654
+Parameters optimization took 0 rounds (0.008 sec)
+
+Partition information was printed to Output/example.phy.best_model.nex
+BEST SCORE FOUND : -7575.107
+Total tree length: 1.282
+
+Total number of iterations: 2
+CPU time used for tree search: 0.080 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.081 sec (0h:0m:0s)
+Total CPU time used: 0.133 sec (0h:0m:0s)
+Total wall-clock time used: 0.126 sec (0h:0m:0s)
+
+Analysis results written to: 
+  IQ-TREE report:                Output/example.phy.iqtree
+  Maximum-likelihood tree:       Output/example.phy.treefile
+  Likelihood distances:          Output/example.phy.mldist
+  Best partitioning scheme:      Output/example.phy.best_scheme.nex
+           in RAxML format:      Output/example.phy.best_scheme
+  Screen log file:               Output/example.phy.log
+
+Date and Time: Thu Mar  7 21:46:13 2024
+IQ-TREE MPI multicore version 2.2.2.7 COVID-edition for Linux 64-bit built Jan 23 2024
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    flash-GF63-Thin-10SC (AVX2, FMA3, 7 GB RAM)
+Command: /home/flash/IQTREE/build-master/iqtree2-mpi -s example.phy -m MFP -fast -mset JC69,F81,HKY,GTR -safe -pre Output/example.phy_AICc -seed 0 -redo
+Seed:    0 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Mar  7 21:46:13 2024
+Kernel:  Safe AVX+FMA - 1 threads (12 CPU cores detected)
+MPI:     1 processes
+
+HINT: Use -nt option to specify number of threads because your CPU has 12 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file example.phy ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.00113281 secs using 62.5% CPU
+Alignment has 14 sequences with 2436 columns, 556 distinct patterns
+330 parsimony-informative, 306 singleton sites, 1800 constant sites
+Analyzing sequences: done in 1.4808e-05 secs using 60.78% CPU
+Checking for duplicate sequences: done in 2.2722e-05 secs using 61.61% CPU
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.00 seconds
+Perform fast likelihood tree search using GTR+I+G model...
+Estimate model parameters (epsilon = 5.00)
+Perform nearest neighbor interchange...
+Optimizing NNI: done in 0.00717533 secs using 97.78% CPU
+Estimate model parameters (epsilon = 1.00)
+1. Initial log-likelihood: -9001.79
+Optimal log-likelihood: -9001.69
+Rate parameters:  A-C: 4.98205  A-G: 11.17560  A-T: 8.76150  C-G: 3.46628  C-T: 35.58546  G-T: 1.00000
+Base frequencies:  A: 0.307  C: 0.165  G: 0.192  T: 0.335
+Proportion of invariable sites: 0.367
+Gamma shape alpha: 0.467
+Parameters optimization took 1 rounds (0.006 sec)
+Time for fast ML tree search: 0.062 seconds
+
+NOTE: ModelFinder requires 2 MB RAM!
+ModelFinder will test up to 88 DNA models (sample size: 2436) ...
+ No. Model         -LnL         df  AIC          AICc         BIC
+  1  JC            9907.329     25  19864.658    19865.197    20009.610
+  2  JC+I          9503.520     26  19059.040    19059.623    19209.791
+  3  JC+G4         9486.296     26  19024.591    19025.174    19175.342
+  4  JC+I+G4       9480.812     27  19015.623    19016.251    19172.172
+  5  JC+R2         9480.739     27  19015.477    19016.105    19172.026
+  6  JC+R3         9480.225     29  19018.449    19019.173    19186.595
+ 14  JC+I+R2       8147.661     28  16351.322    16351.997    16513.669
+ 15  JC+I+R3       8132.887     30  16325.773    16326.547    16499.717
+WARNING: Log-likelihood -8135.41 of JC+I+R4 worse than JC+I+R3 -8132.89
+ 16  JC+I+R4       8135.413     32  16334.826    16335.705    16520.365
+ 37  F81+F+I+R3    8012.847     33  16091.693    16092.628    16283.031
+ 59  HKY+F+I+R3    7779.301     34  15626.601    15627.593    15823.737
+ 81  GTR+F+I+R3    7655.092     38  15386.184    15387.421    15606.513
+Akaike Information Criterion:           GTR+F+I+R3
+Corrected Akaike Information Criterion: GTR+F+I+R3
+Bayesian Information Criterion:         GTR+F+I+R3
+Best-fit model: GTR+F+I+R3 chosen according to BIC
+
+All model information printed to Output/example.phy_AICc.model.gz
+CPU time for ModelFinder: 0.597 seconds (0h:0m:0s)
+Wall-clock time for ModelFinder: 0.601 seconds (0h:0m:0s)
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.500)
+1. Initial log-likelihood: -7655.092
+Optimal log-likelihood: -7655.091
+Rate parameters:  A-C: 5.07946  A-G: 11.40595  A-T: 8.91480  C-G: 3.46001  C-T: 35.99381  G-T: 1.00000
+Base frequencies:  A: 0.307  C: 0.165  G: 0.192  T: 0.335
+Proportion of invariable sites: 0.739
+Site proportion and rates:  (0.593,0.229) (0.098,0.855) (0.308,2.530)
+Parameters optimization took 1 rounds (0.008 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.000507306 secs using 99.94% CPU
+Computing ML distances took 0.000559 sec (of wall-clock time) 0.000562 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 2.1138e-05 secs using 99.35% CPU
+Constructing RapidNJ tree: done in 6.2406e-05 secs using 99.35% CPU
+Computing RapidNJ tree took 0.000129 sec (of wall-clock time) 0.000129 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -7665.556
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+
+Do NNI search on 2 best initial trees
+Optimizing NNI: done in 0.00389257 secs using 202.8% CPU
+Optimizing NNI: done in 0.0117856 secs using 146.7% CPU
+Finish initializing candidate tree set (2)
+Current best tree score: -7655.091 / CPU time: 0.017
+Number of iterations: 2
+Total number of trees received: 0
+Total number of trees sent: 0
+Total number of NNI searches done by processor 0: 3
+Total size of sended messages in processor 0 (bytes): 0
+Total size of received messages in processor 0 (bytes): 0
+TREE SEARCH COMPLETED AFTER 2 ITERATIONS / Time: 0h:0m:0s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.050)
+1. Initial log-likelihood: -7655.091
+Optimal log-likelihood: -7655.091
+Rate parameters:  A-C: 5.07822  A-G: 11.38545  A-T: 8.92939  C-G: 3.47158  C-T: 35.99834  G-T: 1.00000
+Base frequencies:  A: 0.307  C: 0.165  G: 0.192  T: 0.335
+Proportion of invariable sites: 0.739
+Site proportion and rates:  (0.593,0.229) (0.098,0.855) (0.308,2.530)
+Parameters optimization took 1 rounds (0.008 sec)
+BEST SCORE FOUND : -7655.091
+Total tree length: 1.320
+
+Total number of iterations: 2
+CPU time used for tree search: 0.027 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.018 sec (0h:0m:0s)
+Total CPU time used: 0.057 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+Analysis results written to: 
+  IQ-TREE report:                Output/example.phy_AICc.iqtree
+  Maximum-likelihood tree:       Output/example.phy_AICc.treefile
+  Likelihood distances:          Output/example.phy_AICc.mldist
+  Screen log file:               Output/example.phy_AICc.log
+
+Date and Time: Thu Mar  7 21:46:14 2024
+IQ-TREE MPI multicore version 2.2.2.7 COVID-edition for Linux 64-bit built Jan 23 2024
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    flash-GF63-Thin-10SC (AVX2, FMA3, 7 GB RAM)
+Command: /home/flash/IQTREE/build-master/iqtree2-mpi -s example.phy -m GTR+F+I+R2 -te Output/example.phy.tree -safe -pre Output/example.phy_G1 -seed 0 -redo
+Seed:    0 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Mar  7 21:46:14 2024
+Kernel:  Safe AVX+FMA - 1 threads (12 CPU cores detected)
+MPI:     1 processes
+
+HINT: Use -nt option to specify number of threads because your CPU has 12 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file example.phy ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.000928116 secs using 39.97% CPU
+Alignment has 14 sequences with 2436 columns, 556 distinct patterns
+330 parsimony-informative, 306 singleton sites, 1800 constant sites
+                                Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 3.1149e-05 secs using 41.73% CPU
+   1  CP03_82_Morpho_aurora            18.56%    failed      0.29%
+   2  CP04_86_Morpho_aurora            13.71%    passed     93.85%
+   3  CP07_01_Morpho_amphitryon         0.12%    passed     79.38%
+   4  CP07_04_Morpho_sulkowskyi         0.08%    passed     93.08%
+   5  CP09_56_Caerois_chorinaeus        4.89%    passed     90.31%
+   6  NW100_2_Morpho_epistrophus       15.07%    passed     71.61%
+   7  NW100_3_Morpho_aega              38.67%    passed      7.56%
+   8  NW103_6_Morpho_helenor           36.74%    passed      6.04%
+   9  NW109_12_Antirrhea_philoctetes   35.92%    failed      1.64%
+  10  NW109_13_Morpho_amathonte        17.32%    passed     91.40%
+  11  NW110_11_Morpho_menelaus         16.95%    passed     82.65%
+  12  NW110_12_Morpho_hecuba            1.52%    passed     79.43%
+  13  NW110_13_Morpho_rhetenor          1.23%    passed     97.79%
+  14  NW110_15_Morpho_portis            1.15%    passed     72.14%
+****  TOTAL                            14.42%  2 sequences failed composition chi2 test (p-value<5%; df=3)
+Checking for duplicate sequences: done in 2.1533e-05 secs using 41.8% CPU
+Reading input tree file Output/example.phy.tree ...
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -9527.645
+2. Current log-likelihood: -9018.793
+3. Current log-likelihood: -9010.166
+4. Current log-likelihood: -9007.925
+5. Current log-likelihood: -9006.286
+6. Current log-likelihood: -9005.010
+7. Current log-likelihood: -9004.039
+8. Current log-likelihood: -9003.285
+9. Current log-likelihood: -9002.726
+10. Current log-likelihood: -9002.303
+11. Current log-likelihood: -9001.979
+12. Current log-likelihood: -9001.723
+13. Current log-likelihood: -9001.512
+14. Current log-likelihood: -9001.330
+15. Current log-likelihood: -9001.168
+16. Current log-likelihood: -9001.019
+17. Current log-likelihood: -9000.875
+18. Current log-likelihood: -9000.731
+19. Current log-likelihood: -9000.596
+20. Current log-likelihood: -9000.465
+21. Current log-likelihood: -9000.335
+22. Current log-likelihood: -9000.207
+23. Current log-likelihood: -9000.082
+24. Current log-likelihood: -8999.958
+25. Current log-likelihood: -8999.838
+26. Current log-likelihood: -8999.719
+27. Current log-likelihood: -8999.605
+28. Current log-likelihood: -8999.493
+29. Current log-likelihood: -8999.388
+30. Current log-likelihood: -8999.287
+31. Current log-likelihood: -8999.192
+32. Current log-likelihood: -8999.044
+33. Current log-likelihood: -8998.956
+34. Current log-likelihood: -8998.875
+35. Current log-likelihood: -8998.808
+36. Current log-likelihood: -8998.746
+37. Current log-likelihood: -8998.689
+38. Current log-likelihood: -8998.638
+39. Current log-likelihood: -8998.593
+40. Current log-likelihood: -8998.552
+41. Current log-likelihood: -8998.516
+42. Current log-likelihood: -8998.484
+43. Current log-likelihood: -8998.456
+44. Current log-likelihood: -8998.431
+45. Current log-likelihood: -8998.409
+46. Current log-likelihood: -8998.391
+47. Current log-likelihood: -8998.375
+48. Current log-likelihood: -8998.361
+49. Current log-likelihood: -8998.349
+50. Current log-likelihood: -8998.338
+Optimal log-likelihood: -8998.328
+Rate parameters:  A-C: 5.36909  A-G: 11.79605  A-T: 9.28547  C-G: 3.58709  C-T: 39.32402  G-T: 1.00000
+Base frequencies:  A: 0.307  C: 0.165  G: 0.192  T: 0.335
+Proportion of invariable sites: 0.564
+Site proportion and rates:  (0.323,1.081) (0.113,5.762)
+Parameters optimization took 50 rounds (0.261 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -8998.328
+Total tree length: 0.772
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.266 sec (0h:0m:0s)
+Total wall-clock time used: 0.266 sec (0h:0m:0s)
+
+Analysis results written to: 
+  IQ-TREE report:                Output/example.phy_G1.iqtree
+  Maximum-likelihood tree:       Output/example.phy_G1.treefile
+  Screen log file:               Output/example.phy_G1.log
+
+Date and Time: Thu Mar  7 21:46:14 2024
+IQ-TREE MPI multicore version 2.2.2.7 COVID-edition for Linux 64-bit built Jan 23 2024
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    flash-GF63-Thin-10SC (AVX2, FMA3, 7 GB RAM)
+Command: /home/flash/IQTREE/build-master/iqtree2-mpi -s example.phy -m GTR+F+I+R3 -te Output/example.phy.tree -safe -pre Output/example.phy_G2 -seed 0 -redo
+Seed:    0 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Mar  7 21:46:15 2024
+Kernel:  Safe AVX+FMA - 1 threads (12 CPU cores detected)
+MPI:     1 processes
+
+HINT: Use -nt option to specify number of threads because your CPU has 12 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file example.phy ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.00124584 secs using 91.26% CPU
+Alignment has 14 sequences with 2436 columns, 556 distinct patterns
+330 parsimony-informative, 306 singleton sites, 1800 constant sites
+                                Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 3.3957e-05 secs using 97.18% CPU
+   1  CP03_82_Morpho_aurora            18.56%    failed      0.29%
+   2  CP04_86_Morpho_aurora            13.71%    passed     93.85%
+   3  CP07_01_Morpho_amphitryon         0.12%    passed     79.38%
+   4  CP07_04_Morpho_sulkowskyi         0.08%    passed     93.08%
+   5  CP09_56_Caerois_chorinaeus        4.89%    passed     90.31%
+   6  NW100_2_Morpho_epistrophus       15.07%    passed     71.61%
+   7  NW100_3_Morpho_aega              38.67%    passed      7.56%
+   8  NW103_6_Morpho_helenor           36.74%    passed      6.04%
+   9  NW109_12_Antirrhea_philoctetes   35.92%    failed      1.64%
+  10  NW109_13_Morpho_amathonte        17.32%    passed     91.40%
+  11  NW110_11_Morpho_menelaus         16.95%    passed     82.65%
+  12  NW110_12_Morpho_hecuba            1.52%    passed     79.43%
+  13  NW110_13_Morpho_rhetenor          1.23%    passed     97.79%
+  14  NW110_15_Morpho_portis            1.15%    passed     72.14%
+****  TOTAL                            14.42%  2 sequences failed composition chi2 test (p-value<5%; df=3)
+Checking for duplicate sequences: done in 3.4446e-05 secs using 98.71% CPU
+Reading input tree file Output/example.phy.tree ...
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -9504.173
+2. Current log-likelihood: -9007.652
+3. Current log-likelihood: -9002.180
+4. Current log-likelihood: -9001.423
+5. Current log-likelihood: -9000.957
+6. Current log-likelihood: -9000.603
+7. Current log-likelihood: -9000.334
+8. Current log-likelihood: -9000.111
+9. Current log-likelihood: -8999.921
+10. Current log-likelihood: -8999.752
+11. Current log-likelihood: -8999.602
+12. Current log-likelihood: -8999.468
+13. Current log-likelihood: -8999.350
+14. Current log-likelihood: -8999.249
+15. Current log-likelihood: -8999.163
+16. Current log-likelihood: -8999.085
+17. Current log-likelihood: -8999.018
+18. Current log-likelihood: -8998.958
+19. Current log-likelihood: -8998.907
+20. Current log-likelihood: -8998.856
+21. Current log-likelihood: -8998.811
+22. Current log-likelihood: -8998.776
+23. Current log-likelihood: -8998.748
+24. Current log-likelihood: -8998.721
+25. Current log-likelihood: -8998.699
+26. Current log-likelihood: -8998.679
+27. Current log-likelihood: -8998.663
+28. Current log-likelihood: -8998.647
+29. Current log-likelihood: -8998.635
+30. Current log-likelihood: -8998.619
+31. Current log-likelihood: -8998.609
+Optimal log-likelihood: -8998.601
+Rate parameters:  A-C: 5.08331  A-G: 11.16023  A-T: 8.78014  C-G: 3.36840  C-T: 37.21250  G-T: 1.00000
+Base frequencies:  A: 0.307  C: 0.165  G: 0.192  T: 0.335
+Proportion of invariable sites: 0.446
+Site proportion and rates:  (0.213,0.214) (0.240,1.439) (0.102,5.993)
+Parameters optimization took 31 rounds (0.324 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -8998.601
+Total tree length: 0.772
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.330 sec (0h:0m:0s)
+Total wall-clock time used: 0.330 sec (0h:0m:0s)
+
+Analysis results written to: 
+  IQ-TREE report:                Output/example.phy_G2.iqtree
+  Maximum-likelihood tree:       Output/example.phy_G2.treefile
+  Screen log file:               Output/example.phy_G2.log
+
+Date and Time: Thu Mar  7 21:46:15 2024
+IQ-TREE MPI multicore version 2.2.2.7 COVID-edition for Linux 64-bit built Jan 23 2024
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    flash-GF63-Thin-10SC (AVX2, FMA3, 7 GB RAM)
+Command: /home/flash/IQTREE/build-master/iqtree2-mpi -s example.phy -m GTR+F+I+R2 -te Output/example.phy.tree -safe -pre Output/example.phy_G3 -seed 0 -redo
+Seed:    0 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Mar  7 21:46:15 2024
+Kernel:  Safe AVX+FMA - 1 threads (12 CPU cores detected)
+MPI:     1 processes
+
+HINT: Use -nt option to specify number of threads because your CPU has 12 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file example.phy ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.000967713 secs using 33.38% CPU
+Alignment has 14 sequences with 2436 columns, 556 distinct patterns
+330 parsimony-informative, 306 singleton sites, 1800 constant sites
+                                Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 1.4212e-05 secs using 28.15% CPU
+   1  CP03_82_Morpho_aurora            18.56%    failed      0.29%
+   2  CP04_86_Morpho_aurora            13.71%    passed     93.85%
+   3  CP07_01_Morpho_amphitryon         0.12%    passed     79.38%
+   4  CP07_04_Morpho_sulkowskyi         0.08%    passed     93.08%
+   5  CP09_56_Caerois_chorinaeus        4.89%    passed     90.31%
+   6  NW100_2_Morpho_epistrophus       15.07%    passed     71.61%
+   7  NW100_3_Morpho_aega              38.67%    passed      7.56%
+   8  NW103_6_Morpho_helenor           36.74%    passed      6.04%
+   9  NW109_12_Antirrhea_philoctetes   35.92%    failed      1.64%
+  10  NW109_13_Morpho_amathonte        17.32%    passed     91.40%
+  11  NW110_11_Morpho_menelaus         16.95%    passed     82.65%
+  12  NW110_12_Morpho_hecuba            1.52%    passed     79.43%
+  13  NW110_13_Morpho_rhetenor          1.23%    passed     97.79%
+  14  NW110_15_Morpho_portis            1.15%    passed     72.14%
+****  TOTAL                            14.42%  2 sequences failed composition chi2 test (p-value<5%; df=3)
+Checking for duplicate sequences: done in 4.1404e-05 secs using 33.81% CPU
+Reading input tree file Output/example.phy.tree ...
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -9527.645
+2. Current log-likelihood: -9018.793
+3. Current log-likelihood: -9010.166
+4. Current log-likelihood: -9007.925
+5. Current log-likelihood: -9006.286
+6. Current log-likelihood: -9005.010
+7. Current log-likelihood: -9004.039
+8. Current log-likelihood: -9003.285
+9. Current log-likelihood: -9002.726
+10. Current log-likelihood: -9002.303
+11. Current log-likelihood: -9001.979
+12. Current log-likelihood: -9001.723
+13. Current log-likelihood: -9001.512
+14. Current log-likelihood: -9001.330
+15. Current log-likelihood: -9001.168
+16. Current log-likelihood: -9001.019
+17. Current log-likelihood: -9000.875
+18. Current log-likelihood: -9000.731
+19. Current log-likelihood: -9000.596
+20. Current log-likelihood: -9000.465
+21. Current log-likelihood: -9000.335
+22. Current log-likelihood: -9000.207
+23. Current log-likelihood: -9000.082
+24. Current log-likelihood: -8999.958
+25. Current log-likelihood: -8999.838
+26. Current log-likelihood: -8999.719
+27. Current log-likelihood: -8999.605
+28. Current log-likelihood: -8999.493
+29. Current log-likelihood: -8999.388
+30. Current log-likelihood: -8999.287
+31. Current log-likelihood: -8999.192
+32. Current log-likelihood: -8999.044
+33. Current log-likelihood: -8998.956
+34. Current log-likelihood: -8998.875
+35. Current log-likelihood: -8998.808
+36. Current log-likelihood: -8998.746
+37. Current log-likelihood: -8998.689
+38. Current log-likelihood: -8998.638
+39. Current log-likelihood: -8998.593
+40. Current log-likelihood: -8998.552
+41. Current log-likelihood: -8998.516
+42. Current log-likelihood: -8998.484
+43. Current log-likelihood: -8998.456
+44. Current log-likelihood: -8998.431
+45. Current log-likelihood: -8998.409
+46. Current log-likelihood: -8998.391
+47. Current log-likelihood: -8998.375
+48. Current log-likelihood: -8998.361
+49. Current log-likelihood: -8998.349
+50. Current log-likelihood: -8998.338
+Optimal log-likelihood: -8998.328
+Rate parameters:  A-C: 5.36909  A-G: 11.79605  A-T: 9.28547  C-G: 3.58709  C-T: 39.32402  G-T: 1.00000
+Base frequencies:  A: 0.307  C: 0.165  G: 0.192  T: 0.335
+Proportion of invariable sites: 0.564
+Site proportion and rates:  (0.323,1.081) (0.113,5.762)
+Parameters optimization took 50 rounds (0.285 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -8998.328
+Total tree length: 0.772
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.282 sec (0h:0m:0s)
+Total wall-clock time used: 0.291 sec (0h:0m:0s)
+
+Analysis results written to: 
+  IQ-TREE report:                Output/example.phy_G3.iqtree
+  Maximum-likelihood tree:       Output/example.phy_G3.treefile
+  Screen log file:               Output/example.phy_G3.log
+
+Date and Time: Thu Mar  7 21:46:16 2024
+Output is exists
+This file is ok.
+example.phy
+Finish to create the fasta file.
+avg rate: 1.0
+2 check max rate: 1.0; min rate: 1.0; 1/3 rate: 1.0 2/3 rate: 1.0
+
+First Best Model: GTR+F+I+R2 | Treefile: Output/example.phy.treefile
+
+Second Best Model: GTR+F+I+R3 | Treefile: Output/example.phy.treefile
+
+Third Best Model: GTR+F+I+R2 | Treefile: Output/example.phy.treefile
+
+cp Output/example.phy_AICc.treefile Output/example.phy.tree
+Command 1: /home/flash/IQTREE/build-master/iqtree2-mpi -s example.phy -m GTR+F+I+R2 -te Output/example.phy.tree -safe -pre Output/example.phy_G1  -seed 0 -redo 
+
+Command 2: /home/flash/IQTREE/build-master/iqtree2-mpi -s example.phy -m GTR+F+I+R3 -te Output/example.phy.tree -safe -pre Output/example.phy_G2  -seed 0 -redo 
+
+Command 3: /home/flash/IQTREE/build-master/iqtree2-mpi -s example.phy -m GTR+F+I+R2 -te Output/example.phy.tree -safe -pre Output/example.phy_G3  -seed 0 -redo 
+
+Output is exists
+logs is exists
+Don't create Output/Results.
+Don't create Output/siteLH.
+mset: JC69,F81,HKY,GTR
+align: example.phy
+maxlength: 2436
+Tper: 10.0
+Output: Output
+DNA: 0
+Number of Executes: 1
+Mission Completed.

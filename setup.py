@@ -16,14 +16,14 @@ if os.path.isfile("config.py"):
 	for line in rconfig:
 		print(line.strip()+"\n")
 	rconfig.close()
-	reinstall = str(raw_input("Do you want to overwrite? [Y/N]: "))
+	reinstall = str(input("Do you want to overwrite? [Y/N]: "))
 	if reinstall == "Y" or reinstall == "y":
 		os.system("rm config.py")
 		rconfig = open("config.py","w")
 		#iqtree_path = "$IQTREE/" #IQ-TREE path including splash
 		#tiger_path = "/home/lkthu/tiger_original/"
-		iq_path = raw_input("Input the IQ-TREE path including splash: [$IQTREE]:")
-		tiger_path = raw_input("Input the TIGER path including splash: [tiger_original/]:")
+		iq_path = input("Input the IQ-TREE path including splash: [$IQTREE]:")
+		tiger_path = input("Input the TIGER path including splash: [tiger_original/]:")
 		rconfig.write("iqtree_path = \""+str(iq_path)+"\" \n")
 		rconfig.write("tiger_path = \""+str(tiger_path)+"\" \n")
 		rconfig.close()

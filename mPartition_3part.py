@@ -128,9 +128,9 @@ def convertPhylip2Fasta(filex1,tofile):
 	outfile.close()
 	infile.close()
 	if(countLines(tofile)>0):
-		print "Finish to create the fasta file."
+		print("Finish to create the fasta file.")
 	else:
-		print "Create fasta file error."
+		print("Create fasta file error.")
 
 def line_prepender(filename, line):
 	with open(filename, 'r+') as f:
@@ -313,6 +313,7 @@ if tig_rate == "0":
 	convertPhylip2Fasta(newfile,output+"/"+treefn+".FASTA")
 	if not os.path.isfile(output+"/rate_"+treefn):
 		os.system(tiger_path+"tiger -in "+output+"/"+treefn+".FASTA -f s,r -rl "+output+"/rate_"+treefn) 
+		print(f"Command: {tiger_path}tiger -in {output}/{treefn}.FASTA -f s,r -rl {output}/rate_{treefn}")
 
 	os.system("rm "+output+"/"+treefn+".FASTA")
 	
@@ -335,13 +336,13 @@ if tig_rate == "0":
 		else:
 			if(len(line.strip()) > 0):
 				if " " in line:
-					if len(line.split(" ",1)[1].strip()) <> numSite:
+					if len(line.split(" ",1)[1].strip()) != numSite:
 						#print "File format's error."
 						sys.exit("File format's error.")
 					else:
 						seq += line.split(" ",1)[1].strip()+"\n"
 				elif "\t" in line:
-					if len(line.split("\t")[1].strip()) <> numSite:
+					if len(line.split("\t")[1].strip()) != numSite:
 						#saprint "File format's error"
 						sys.exit("File format's error")
 					else:
@@ -360,7 +361,6 @@ if tig_rate == "0":
 			invF.write("0\n")
 	invF.close()
 	
-	
 	if os.path.isfile(output+"/rate_"+treefn):
 		ratefile = open(output+"/rate_"+treefn,"r")
 		for line in ratefile:
@@ -368,7 +368,7 @@ if tig_rate == "0":
 		ratefile.close()
 		checkstate = 1
 	else:
-		print "Rate file's not exists, please check the input file. \n"
+		print("Rate file's not exists, please check the input file. \n")
 else:
 	#if tiger_rate file's not exists.
 	if not os.path.isfile(output+"/"+tig_rate) or not os.path.isfile(parfile):
@@ -381,14 +381,14 @@ else:
 				rvalue.append(float(line.strip()))
 			ratefile.close()
 		else:
-			print "Rate file's not exists, please check the input file. \n"
+			print("Rate file's not exists, please check the input file. \n")
 		if os.path.isfile(output+"/inv_"+treefn):
 			invfile = open(output+"/inv_"+treefn,"r")
 			for line in invfile:
 				ivalue.append(int(line.strip()))
 			invfile.close()
 		else:
-			print "Inv site list file's not exists, please check the input file. \n"
+			print("Inv site list file's not exists, please check the input file. \n")
 	else:
 		ftiger = open(output+"/"+tig_rate,"r")
 		lines=ftiger.readlines()
@@ -421,7 +421,7 @@ if checkstate == 1:
 	avg_rate = min_rate+(max_rate-min_rate)/3
 	a2vg_rate = min_rate+(max_rate-min_rate)*2/3 
 	
-	print "avg rate: "+str(avg_rate)
+	print("avg rate: "+str(avg_rate))
 	print("2 check max rate: "+str(max_rate) + "; min rate: "+ str(min_rate)+"; 1/3 rate: "+str(avg_rate)+" 2/3 rate: "+str(a2vg_rate)+"\n")
 	par1 = []
 	par2 = []
@@ -475,10 +475,10 @@ if checkstate == 1:
 	line += ";"
 	parFile.write(line+"\nend;")
 	parFile.close()
-	command = iqtree_path+"iqtree -s "+newfile+" -m MFP -fast -mset "+mset+" -spp "+output+"/S1_Par_"+treefn+" -safe -pre "+output+"/"+treefn+" -seed 0 -redo \n"
+	command = iqtree_path+"iqtree2-mpi -s "+newfile+" -m MFP -fast -mset "+mset+" -spp "+output+"/S1_Par_"+treefn+" -safe -pre "+output+"/"+treefn+" -seed 0 -redo \n"
 	os.system(command)
 	if not os.path.isfile(output+"/"+treefn+"_AICc.iqtree"):
-		command = iqtree_path+"iqtree -s "+newfile+" -m MFP -fast -mset "+mset+" -safe -pre "+output+"/"+treefn+"_AICc  -seed 0  -redo \n"
+		command = iqtree_path+"iqtree2-mpi -s "+newfile+" -m MFP -fast -mset "+mset+" -safe -pre "+output+"/"+treefn+"_AICc  -seed 0  -redo \n"
 		os.system(command)
 	
 model =""
@@ -503,6 +503,7 @@ print("Second Best Model: "+second_model+" | Treefile: "+output+"/"+treefn+".tre
 print("Third Best Model: "+third_model+" | Treefile: "+output+"/"+treefn+".treefile\n")
 
 if treefile == "NOTTREE":
+	print("cp "+output+"/"+treefn+"_AICc.treefile "+output+"/"+treefn+".tree")
 	os.system("cp "+output+"/"+treefn+"_AICc.treefile "+output+"/"+treefn+".tree")
 	treefile = output+"/"+treefn+".tree"
 
@@ -553,11 +554,14 @@ def getK(fromFile):
 				text += line.split(" ")[8]
 				return text
 
-command = iqtree_path+"iqtree -s "+newfile+" -m "+first_model+" -te "+treefile+" -wsl -safe -pre "+output+"/"+treefn+"_G1  -seed 0 -redo \n"
+command = iqtree_path+"iqtree2-mpi -s "+newfile+" -m "+first_model+" -te "+treefile+" -safe -pre "+output+"/"+treefn+"_G1  -seed 0 -redo \n"
+print(f"Command 1: {command}")
 os.system(command)
-command = iqtree_path+"iqtree -s "+newfile+" -m "+second_model+" -te "+treefile+" -wsl -safe -pre "+output+"/"+treefn+"_G2  -seed 0 -redo \n"
+command = iqtree_path+"iqtree2-mpi -s "+newfile+" -m "+second_model+" -te "+treefile+" -safe -pre "+output+"/"+treefn+"_G2  -seed 0 -redo \n"
+print(f"Command 2: {command}")
 os.system(command)
-command = iqtree_path+"iqtree -s "+newfile+" -m "+third_model+" -te "+treefile+" -wsl -safe -pre "+output+"/"+treefn+"_G3  -seed 0 -redo \n"
+command = iqtree_path+"iqtree2-mpi -s "+newfile+" -m "+third_model+" -te "+treefile+" -safe -pre "+output+"/"+treefn+"_G3  -seed 0 -redo \n"
+print(f"Command 3: {command}")
 os.system(command)
 
 g1 = []
@@ -708,7 +712,7 @@ if(os.path.isfile(output+"/"+treefn+"_G1.sitelh") and os.path.isfile(output+"/"+
 			parFile.write(line.strip(",")+"\n")
 		parFile.close()
 		#os.system("python extractPartitions.py -f "+filex+" -p "+output+"/F1_Par_"+treefn+" -o "+output)
-		os.system("python splitPartition.py -f "+newfile+" -p "+output+"/F1_Par_"+treefn+"")
+		os.system("python3 splitPartition.py -f "+newfile+" -p "+output+"/F1_Par_"+treefn+"")
 		
 		if(os.path.isfile(path+""+treefn+"P1") and not os.path.isfile(output+"/"+treefn+"P1")):
 			os.system("cp "+path+""+treefn+"P1 "+output+"/"+treefn+"P1")
@@ -735,13 +739,13 @@ if(os.path.isfile(output+"/"+treefn+"_G1.sitelh") and os.path.isfile(output+"/"+
 		#os.system("mv "+output+"/"+treefn+"_Par2 "+output+"/"+treefn+"P2")
 		command = ""
 		if(os.path.isfile(output+"/"+treefn+"P1")):
-			command = iqtree_path+"iqtree -s "+output+"/"+treefn+"P1 -m MFP -fast -mset "+mset+" -t "+treefile+" -safe  -seed 0  -pre "+output+"/"+treefn+"P1_AICc\n"
+			command = iqtree_path+"iqtree2-mpi -s "+output+"/"+treefn+"P1 -m MFP -fast -mset "+mset+" -t "+treefile+" -safe  -seed 0  -pre "+output+"/"+treefn+"P1_AICc\n"
 			os.system(command)
 		if(os.path.isfile(output+"/"+treefn+"P2")):
-			command = iqtree_path+"iqtree -s "+output+"/"+treefn+"P2 -m MFP -fast -mset "+mset+" -t "+treefile+" -safe  -seed 0 -pre "+output+"/"+treefn+"P2_AICc\n"
+			command = iqtree_path+"iqtree2-mpi -s "+output+"/"+treefn+"P2 -m MFP -fast -mset "+mset+" -t "+treefile+" -safe  -seed 0 -pre "+output+"/"+treefn+"P2_AICc\n"
 			os.system(command)
 		if(os.path.isfile(output+"/"+treefn+"P3")):
-			command = iqtree_path+"iqtree -s "+output+"/"+treefn+"P3 -m MFP -fast -mset "+mset+" -t "+treefile+" -safe  -seed 0 -pre "+output+"/"+treefn+"P3_AICc\n"
+			command = iqtree_path+"iqtree2-mpi -s "+output+"/"+treefn+"P3 -m MFP -fast -mset "+mset+" -t "+treefile+" -safe  -seed 0 -pre "+output+"/"+treefn+"P3_AICc\n"
 			os.system(command)
 		
 		# aic = 0.0
@@ -770,42 +774,42 @@ if(os.path.isfile(output+"/"+treefn+"_G1.sitelh") and os.path.isfile(output+"/"+
 		FirstBIC = 0
 		if(os.path.isfile(output+"/"+treefn+"_AICc.iqtree")):
 			FirstBIC = float(getBIC(output+"/"+treefn+"_AICc.iqtree"))
-		print "FirstAICc: "+str(FirstBIC)+" | New AICc: "+str(bic)
+		print("FirstAICc: "+str(FirstBIC)+" | New AICc: "+str(bic))
 		
 		checkAICcFile = 1
 		if ((not os.path.isfile(output+"/"+treefn+"P1_AICc.iqtree")) and os.path.isfile(output+"/"+treefn+"P1")):
 			checkAICcFile = 0
-			print "IQ-TREE core dump ERROR - "+treefn+"P1_AICc.iqtree"
+			print("IQ-TREE core dump ERROR - "+treefn+"P1_AICc.iqtree")
 		
 		if ((not os.path.isfile(output+"/"+treefn+"P2_AICc.iqtree")) and os.path.isfile(output+"/"+treefn+"P2")):
 			checkAICcFile = 0
-			print "IQ-TREE core dump ERROR - "+treefn+"P2_AICc.iqtree"
+			print("IQ-TREE core dump ERROR - "+treefn+"P2_AICc.iqtree")
 		
 		if ((not os.path.isfile(output+"/"+treefn+"P3_AICc.iqtree")) and os.path.isfile(output+"/"+treefn+"P3")):
 			checkAICcFile = 0
-			print "IQ-TREE core dump ERROR - "+treefn+"P3_AICc.iqtree"
+			print("IQ-TREE core dump ERROR - "+treefn+"P3_AICc.iqtree")
 				
 		if (not os.path.isfile(output+"/"+treefn+"_AICc.iqtree")):
 			checkAICcFile = 0
-			print "IQ-TREE core dump ERROR - "+treefn+"_AICc.iqtree"
+			print("IQ-TREE core dump ERROR - "+treefn+"_AICc.iqtree")
 			
 		if checkAICcFile == 0:
-			print "IQ-TREE core dump ERROR."
+			print("IQ-TREE core dump ERROR.")
 			os.system("cp "+output+"/"+treefn+"P*.log logs/")
 			os.system("rm "+output+"/"+treefn+"P*")
 			os.system("rm core.*")
 			os.system("rm "+output+"/core.*")
 		elif bic > FirstBIC:
-			print "Worser."
+			print("Worser.")
 			os.system("cp "+output+"/"+treefn+"P*.log logs/")			
 			os.system("rm "+output+"/"+treefn+"P*")
 			
 			#os.system("rm "+output+"/"+treefn+"P2*")
 		else:
 			if(os.path.isfile(output+"/"+treefn+"P3") and os.path.isfile(output+"/"+treefn+"P2") and os.path.isfile(output+"/"+treefn+"P1")):
-				print "Better. Extract "+ filex+ " to 3 partitions: "+output+"/"+treefn+"P[1,2,3]."
+				print("Better. Extract "+ filex+ " to 3 partitions: "+output+"/"+treefn+"P[1,2,3].")
 			else:
-				print "Better. Extract "+ filex+ " to 2 partitions: "+output+"/"+treefn+"P[1,2]."
+				print("Better. Extract "+ filex+ " to 2 partitions: "+output+"/"+treefn+"P[1,2].")
 			if(os.path.isfile(parfile)):
 				opar = open(parfile,"r")
 				ipar = open(parfile+"_1","w")
