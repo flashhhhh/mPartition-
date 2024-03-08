@@ -1,0 +1,122 @@
+IQ-TREE multicore version 1.6.12 for Linux 64-bit built Aug 15 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    flash-GF63-Thin-10SC (AVX2, FMA3, 7 GB RAM)
+Command: /home/flash/Downloads/iqtree-1.6.12-Linux/bin/iqtree -s Output/example.phyP2P3P2 -m MFP -fast -mset JC69,F81,HKY,GTR -t Output/example.phy.tree -safe -seed 0 -pre Output/example.phyP2P3P2_AICc
+Seed:    0 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Fri Mar  8 11:42:23 2024
+Kernel:  Safe AVX+FMA - 1 threads (12 CPU cores detected)
+
+HINT: Use -nt option to specify number of threads because your CPU has 12 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file Output/example.phyP2P3P2 ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 14 sequences with 70 columns, 24 distinct patterns
+1 parsimony-informative, 3 singleton sites, 66 constant sites
+                                Gap/Ambiguity  Composition  p-value
+   1  CP03_82_Morpho_aurora            15.71%    passed     84.64%
+   2  CP04_86_Morpho_aurora            12.86%    passed     90.46%
+   3  CP07_01_Morpho_amphitryon         0.00%    passed     91.97%
+   4  CP07_04_Morpho_sulkowskyi         0.00%    passed     97.89%
+   5  CP09_56_Caerois_chorinaeus        8.57%    passed     90.96%
+   6  NW100_2_Morpho_epistrophus       14.29%    passed     94.76%
+   7  NW100_3_Morpho_aega              38.57%    passed     84.20%
+   8  NW103_6_Morpho_helenor           37.14%    passed     87.56%
+   9  NW109_12_Antirrhea_philoctetes   37.14%    passed     87.56%
+  10  NW109_13_Morpho_amathonte        15.71%    passed     94.63%
+  11  NW110_11_Morpho_menelaus         15.71%    passed     98.54%
+  12  NW110_12_Morpho_hecuba            1.43%    passed     99.25%
+  13  NW110_13_Morpho_rhetenor          1.43%    passed     99.25%
+  14  NW110_15_Morpho_portis            1.43%    passed     99.17%
+****  TOTAL                            14.29%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: NW109_12_Antirrhea_philoctetes is identical to NW103_6_Morpho_helenor but kept for subsequent analysis
+NOTE: NW110_13_Morpho_rhetenor is identical to NW110_12_Morpho_hecuba but kept for subsequent analysis
+
+Reading input tree file Output/example.phy.tree ...
+NOTE: ModelFinder requires 0 MB RAM!
+ModelFinder will test 52 DNA models (sample size: 70) ...
+ No. Model         -LnL         df  AIC          AICc         BIC
+  1  JC            145.454      25  340.908      370.453      397.120
+  2  JC+I          134.995      26  321.989      354.640      380.450
+  3  JC+G4         139.503      26  331.006      363.657      389.466
+  4  JC+I+G4       135.296      27  324.593      360.593      385.302
+  5  JC+R2         138.002      27  330.004      366.004      390.713
+  6  JC+R3         137.673      29  333.346      376.846      398.553
+ 14  F81+F         144.613      28  345.226      384.835      408.184
+ 15  F81+F+I       134.617      29  327.235      370.735      392.441
+ 16  F81+F+G4      138.735      29  335.470      378.970      400.676
+ 17  F81+F+I+G4    134.748      30  329.497      377.189      396.952
+ 18  F81+F+R2      136.812      30  333.624      381.317      401.079
+ 19  F81+F+R3      136.411      32  336.821      393.903      408.773
+ 27  HKY+F         144.279      29  346.559      390.059      411.765
+ 28  HKY+F+I       134.149      30  328.297      375.989      395.752
+ 29  HKY+F+G4      138.416      30  336.833      384.525      404.288
+ 30  HKY+F+I+G4    134.271      31  330.543      382.753      400.246
+ 31  HKY+F+R2      136.117      31  334.234      386.445      403.938
+ 32  HKY+F+R3      135.752      33  337.504      399.838      411.705
+ 40  GTR+F         140.503      33  347.006      409.339      421.206
+ 41  GTR+F+I       131.557      34  331.114      399.114      407.563
+ 42  GTR+F+G4      135.082      34  338.165      406.165      414.614
+ 43  GTR+F+I+G4    131.558      35  333.117      407.235      411.814
+ 44  GTR+F+R2      133.337      35  336.673      410.791      415.370
+ 45  GTR+F+R3      132.985      37  339.969      427.844      423.163
+Akaike Information Criterion:           JC+I
+Corrected Akaike Information Criterion: JC+I
+Bayesian Information Criterion:         JC+I
+Best-fit model: JC+I chosen according to BIC
+
+All model information printed to Output/example.phyP2P3P2_AICc.model.gz
+CPU time for ModelFinder: 0.140 seconds (0h:0m:0s)
+Wall-clock time for ModelFinder: 0.140 seconds (0h:0m:0s)
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.500)
+1. Initial log-likelihood: -143.883
+2. Current log-likelihood: -135.328
+Optimal log-likelihood: -134.999
+Rate parameters:  A-C: 1.00000  A-G: 1.00000  A-T: 1.00000  C-G: 1.00000  C-T: 1.00000  G-T: 1.00000
+Base frequencies:  A: 0.250  C: 0.250  G: 0.250  T: 0.250
+Proportion of invariable sites: 0.941
+Parameters optimization took 2 rounds (0.001 sec)
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+
+Do NNI search on 1 best initial trees
+BETTER TREE FOUND at iteration 1: -134.998
+Finish initializing candidate tree set (2)
+Current best tree score: -134.998 / CPU time: 0.001
+Number of iterations: 1
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+TREE SEARCH COMPLETED AFTER 2 ITERATIONS / Time: 0h:0m:0s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.050)
+1. Initial log-likelihood: -134.998
+Optimal log-likelihood: -134.995
+Rate parameters:  A-C: 1.00000  A-G: 1.00000  A-T: 1.00000  C-G: 1.00000  C-T: 1.00000  G-T: 1.00000
+Base frequencies:  A: 0.250  C: 0.250  G: 0.250  T: 0.250
+Proportion of invariable sites: 0.939
+Parameters optimization took 1 rounds (0.000 sec)
+BEST SCORE FOUND : -134.995
+Total tree length: 0.215
+
+Total number of iterations: 2
+CPU time used for tree search: 0.003 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.003 sec (0h:0m:0s)
+Total CPU time used: 0.012 sec (0h:0m:0s)
+Total wall-clock time used: 0.012 sec (0h:0m:0s)
+
+Analysis results written to: 
+  IQ-TREE report:                Output/example.phyP2P3P2_AICc.iqtree
+  Maximum-likelihood tree:       Output/example.phyP2P3P2_AICc.treefile
+  Screen log file:               Output/example.phyP2P3P2_AICc.log
+
+Date and Time: Fri Mar  8 11:42:23 2024
